@@ -1,0 +1,52 @@
+import plagas.*
+import elementos.*
+
+test "test plagas" 
+{
+	const cuca1 = new Cucarachas(pesoPromedio = 15, poblacion = 18)
+	assert.that(cuca1.transmiteEnfermedades())
+	assert.equals(9,cuca1.nivelDeDanio())
+	
+	const cuca2 = new Cucarachas(pesoPromedio = 6, poblacion = 10)
+	assert.notThat(cuca2.transmiteEnfermedades())
+	assert.equals(5,cuca2.nivelDeDanio())
+	
+	const mosq1 = new Mosquitos(poblacion = 12)
+	assert.that(mosq1.transmiteEnfermedades())
+	assert.equals(12,mosq1.nivelDeDanio())
+	
+	const mosq2 = new Mosquitos(poblacion = 20)
+	assert.notThat(mosq2.transmiteEnfermedades())
+	assert.equals(20,mosq2.nivelDeDanio())
+	
+	const garra1 = new Garrapatas(poblacion = 15)
+	assert.that(garra1.transmiteEnfermedades())
+	assert.equals(30,garra1.nivelDeDanio())
+	
+	const garra2 = new Garrapatas(poblacion = 8)
+	assert.notThat(garra2.transmiteEnfermedades())
+	assert.equals(16,garra2.nivelDeDanio())
+	
+	const pulga1 = new Pulgas(poblacion = 11)
+	assert.that(pulga1.transmiteEnfermedades())
+	assert.equals(22,pulga1.nivelDeDanio())
+	
+	const pulga2 = new Pulgas(poblacion = 7)	
+	assert.notThat(pulga2.transmiteEnfermedades())
+	assert.equals(14,pulga2.nivelDeDanio())
+	
+	const hogar1 = new Hogar(mugre = 100, confort = 500)
+	hogar1.recibeAtaqueDe(cuca1)
+	assert.equals(109, hogar1.mugre())
+	assert.equals(17, cuca1.pesoPromedio())
+	assert.equals(19, cuca1.poblacion())
+	const huerta1 = new Huerta(capacidadDeProduccion = 50)
+	huerta1.recibeAtaqueDe(garra1)
+	assert.equals(35, huerta1.capacidadDeProduccion())
+	assert.equals(18, garra1.poblacion())
+	
+	const masc1 = new Mascota(nivelDeSalud = 200)
+	masc1.recibeAtaqueDe(pulga1)
+	assert.equals(178, masc1.nivelDeSalud())
+	assert.equals(12, pulga1.poblacion())
+}

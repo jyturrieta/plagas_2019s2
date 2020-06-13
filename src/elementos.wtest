@@ -1,0 +1,32 @@
+import elementos.* 
+import plagas.*
+
+test "test elementos" 
+{
+	const hogar1 = new Hogar(mugre = 100, confort = 500)
+	const hogar2 = new Hogar(mugre = 100, confort = 200)
+	const hogar3 = new Hogar(mugre = 50, confort = 50)
+	nivelASuperar.cantidad(25)
+	const huerta1 = new Huerta(capacidadDeProduccion = 30)
+	const huerta2 = new Huerta(capacidadDeProduccion = 55 )
+	const huerta3 = new Huerta(capacidadDeProduccion = 23 )
+	const masc1 = new Mascota(nivelDeSalud = 200)
+	const masc2 = new Mascota(nivelDeSalud = 300)
+	const masc3 = new Mascota(nivelDeSalud = 500)
+	
+	
+	const barrio1 = new Barrio()
+	barrio1.agregarElemento(hogar1)
+	barrio1.agregarElemento(hogar2)
+	barrio1.agregarElemento(hogar3)
+	barrio1.agregarElemento(huerta1)
+	barrio1.agregarElemento(huerta2)
+	barrio1.agregarElemento(huerta3)
+	barrio1.agregarElemento(masc1)
+	barrio1.agregarElemento(masc2)
+	barrio1.agregarElemento(masc3)
+	
+	assert.equals(5,barrio1.sumarBuenos())
+	assert.equals(4,barrio1.sumarNoBuenos())
+	assert.that(barrio1.esCopado())
+}
